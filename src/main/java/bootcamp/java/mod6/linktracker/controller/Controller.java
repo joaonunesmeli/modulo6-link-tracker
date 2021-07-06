@@ -23,14 +23,6 @@ public class Controller {
         return m;
     }
 
-    @GetMapping("/link/{id}")
-    public RedirectView redirect(@PathVariable int id) throws InvalidCredentialsException {
-        LinkTracker tracker = this.bumpGetById(id, null);
-        RedirectView r = new RedirectView();
-        r.setUrl("https://" + tracker.getLink());
-        return r;
-    }
-
     @PostMapping("/link/{id}")
     public RedirectView redirect(@PathVariable int id, @RequestBody IdRequestForm form) throws InvalidCredentialsException {
         LinkTracker tracker = this.bumpGetById(id, form);
